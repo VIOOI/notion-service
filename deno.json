@@ -15,7 +15,7 @@
 		"ts-toolbelt": "npm:ts-toolbelt@^9.6.0",
 		"@/": "./"
 	},
-	"nodeModulesDir": true,
+	"nodeModulesDir": "auto",
 	"lock": false,
 	"fmt": {
 		"useTabs": false,
@@ -29,10 +29,5 @@
 		"rules": {
 			"tags": ["recommended"]
 		}
-	},
-	"compilerOptions": {
-		"allowJs": true,
-		"lib": ["deno.window"],
-		"strict": true
 	}
 }

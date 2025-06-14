@@ -9,6 +9,7 @@ import { UUID } from "./internal/core-types.ts";
 import { ChildDatabaseBlock } from "./internal/block-types.ts";
 
 const NOTION_TOKEN = Deno.env.get("NOTION_TOKEN")!;
+const CLIENTS_PAAGE_ID = Deno.env.get("CLIENTS_PAGE_ID")!;
 
 const generic = <T>() => s.Any as s.Schema<T>;
 
@@ -149,8 +150,6 @@ const port = parseInt(Deno.env.get("PORT") || "3000");
 // Create a server layer with the specified port
 const ServerLive = NodeHttpServer.layer(() => createServer(), { port });
 
+// Run the application
 // Логируем информацию о запуске
-Console.log(`Starting server on port ${port}`).pipe(
-  Effect.andThen(() => Console.log(`Environment: ${Deno.env.get("DENO_ENV") || "development"}`)),
-  Effect.andThen(() => NodeRuntime.runMain(Layer.launch(Layer.provide(app, ServerLive)))),
-);
+NodeRuntime.runMain(Layer.launch(Layer.provide(app, ServerLive)));
