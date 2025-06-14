@@ -1,0 +1,43 @@
+# .railwayignore
+.git
+.github
+node_modules
+*.log
+.DS_Store
+.vscode
+.idea
+*.tmp
+*.temp
+coverage
+.nyc_output
+.env.local
+.env.*.local
+
+# ===================================
+# .env.example (создайте .env на основе этого файла)
+# ===================================
+
+# Notion API Token
+NOTION_TOKEN=your_notion_token_here
+
+# Notion Page ID для клиентов
+CLIENTS_PAGE_ID=your_clients_page_id_here
+
+# Railway автоматически предоставит эту переменную
+# PORT=3000
+
+# Окружение (development, production)
+DENO_ENV=production
+
+# ===================================
+# nixpacks.toml (альтернативная конфигурация для Nixpacks)
+# ===================================
+
+[phases.build]
+cmds = ["deno cache main.ts"]
+
+[phases.start]
+cmd = "deno run --allow-all main.ts"
+
+[variables]
+DENO_DIR = "/opt/deno"
